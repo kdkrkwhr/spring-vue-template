@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>{{user.name}} : {{user.phone}}</h1>
+        <h1>{{user.memberName}} ==> {{user.phoneNumber}}</h1>
     </div>
 </template>
 
@@ -13,9 +13,11 @@ export default {
     }
   },
   created () {
-    var id = this.$route.params.id
-    this.$http.get(`/api/users/${id}`).then(resp => {
-      this.user = resp.data.response
+    var ageGroup = this.$route.params.ageGroup;
+
+    this.$http.get(`/api/member/select/${ageGroup}`).then(resp => {
+      this.user = resp.data.data;
+      console.log("DATA :: ", this.user);
     })
   }
 }

@@ -1,9 +1,11 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <h3 v-for="(user, index) in users" :key="user.id">
-      <router-link :to="{ name: 'DetailUser', params: { id: index}}"> {{user.name}} : {{user.phone}} </router-link>
+    <h2>Vue JS Test</h2>
+    <h3 v-for="index in 5" :key="index">
+      <router-link :to="{ name: 'DetailUser', params: { ageGroup: index * 10}}"> 
+        {{index * 10}} 대
+      </router-link>
     </h3>
   </div>
 </template>
@@ -14,18 +16,18 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      users: []
+      members: []
     }
   },
   created () {
-    this.$http.get('/api/users').then(resp => {
-      this.users = resp.data.response
+    this.$http.get('/api/member/select').then(resp => {
+      this.members = resp.data.data;
+      console.log("DATA :: ", this.members);
     })
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1,
 h2 {
