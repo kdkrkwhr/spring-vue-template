@@ -6,10 +6,10 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 @EnableAsync
 @SpringBootApplication
-public class FcmServerApplication {
+public class DefaultServerApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(FcmServerApplication.class, args);
+    SpringApplication.run(DefaultServerApplication.class, args);
   }
 
 }
