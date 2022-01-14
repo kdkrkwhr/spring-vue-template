@@ -26,8 +26,19 @@ public class RestApiController {
   @Autowired
   private MemberService service;
 
+
+  @RequestMapping(value = "/member/select", method = RequestMethod.GET)
+  public @ResponseBody ResponseEntity<Object> selectMemberList()
+      throws Exception {
+    HashMap<String, Object > responseMp = new HashMap<String, Object>();
+
+    responseMp.put("data", service.selectMemberList(""));
+
+    return new ResponseEntity<>(responseMp, HttpStatus.OK);
+  }
+
   @RequestMapping(value = "/member/select/{ageGroup}", method = RequestMethod.GET)
-  public @ResponseBody ResponseEntity<Object> selectMemberList(@PathVariable("ageGroup") String ageGroup)
+  public @ResponseBody ResponseEntity<Object> selectMemberListGroup(@PathVariable("ageGroup") String ageGroup)
       throws Exception {
     HashMap<String, Object > responseMp = new HashMap<String, Object>();
 
